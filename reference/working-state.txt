@@ -1,0 +1,38 @@
+# Known-good touchpad state, captured 2026-09-01 from a working system.
+# Machine: Google Telith
+# Kernel:  7.0.12+kali-amd64    OS: Kali GNU/Linux Rolling
+
+## /proc/bus/input/devices (touchpad entries)
+I: Bus=0018 Vendor=093a Product=200f Version=0100
+N: Name="PNP0C50:00 093A:200F Touchpad"
+P: Phys=i2c-PNP0C50:00
+S: Sysfs=/devices/pci0000:00/0000:00:19.1/i2c_designware.5/i2c-5/i2c-PNP0C50:00/0018:093A:200F.0001/input/input6
+U: Uniq=
+H: Handlers=mouse0 event4 
+B: PROP=5
+B: EV=1b
+B: KEY=e520 10000 0 0 0 0
+B: ABS=6e0800001000003
+B: MSC=20
+I: Bus=0018 Vendor=093a Product=200f Version=0100
+N: Name="PNP0C50:00 093A:200F Mouse"
+P: Phys=i2c-PNP0C50:00
+S: Sysfs=/devices/pci0000:00/0000:00:19.1/i2c_designware.5/i2c-5/i2c-PNP0C50:00/0018:093A:200F.0001/input/input7
+U: Uniq=
+H: Handlers=mouse1 event5 
+B: PROP=0
+B: EV=17
+B: KEY=30000 0 0 0 0
+B: REL=903
+B: MSC=10
+## driver stack
+hid-multitouch -> i2c_hid_acpi -> i2c_designware -> intel-lpss
+
+## libinput quirks applied
+ModelChromebook=1
+AttrPalmPressureThreshold=0
+AttrPressureRange=0:-2
+AttrThumbPressureThreshold=45
+
+## kernel cmdline (stock - no touchpad params needed)
+BOOT_IMAGE=/vmlinuz-7.0.12+kali-amd64 root=/dev/mapper/kali--vg-root ro quiet splash
